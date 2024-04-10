@@ -1,0 +1,74 @@
+
+The class FishPanel is a public class that extends JPanel. 
+The class has some important variables declared at the start, including:
+
+freeFIshes = at the beginning, an ArrayList of all the fish. As the 
+player catches fish, they are removed from this ArrayList. 
+
+caughtFishes = at the beginning, this ArrayList is empty. As the 
+player catches fish, the fish that are caught are added to this 
+ArrayList. 
+
+countdownTimer = allows for the game to have a time limit/countdown. 
+
+The player is initialized in this class as a Fisherman object. 
+These are the methods within the class:
+
+movePlayer() -> It takes the int parameters deltaX and deltaY to 
+add the change of coordinate to the current coordinates of the player.
+It sets the player’s X, Y and sets it to the player's new location 
+using getters, setters, and delta coordinates. 
+
+catchFish() -> It sets the caught fish to invisible, removes it from 
+the freeFishes arrayList and adds it to the caughtFishes arrayList 
+to have its name and score displayed after the timer runs out.
+
+The class MyKeyEventDispatcher is a class that implements 
+KeyEventDispatcher to allow keyboard events in our game. These are 
+the methods within the class:
+
+dispatchKeyEvent() -> This recognizes which key was pressed when a 
+key is pressed and gets its keycode. 
+
+handleKeyPress() -> This takes the parameter of keyCode. This allows 
+the player to move up and down with the keys WASD using a switch case. 
+Depending on which key was pressed, it runs the method movePlayer() 
+passing in -40 or 40 and 0 as either parameter and the player 40 speed 
+in a direction. When the spacebar is pressed, the method catchFish() 
+will run and determine whether or not the player caught a fish. 
+
+getScore() -> This gets the final score by going through each of the 
+fish in the caughtFishes ArrayList and adding up their points using a 
+for loop that iterates the ArrayList. Returns the score as an integer.
+
+getNames() -> This gets the names of each of the fish the player caught 
+in order to display them after the game. It iterates through the 
+caughtFishes ArrayList and concatenates the name of each fish to a 
+string along with a comma and space separator. Returns the list of 
+names as a string. 
+
+displayScore() -> This prints a meaningful, heartfelt message to the 
+player and then displays their final score and the names of all the 
+fish they caught. It uses JLabel and JOptionPane to display the message. 
+
+isBoatOnFish() -> This determines whether or not the boat is over a 
+fish. It takes the parameters of the boats X, Y, and the fish in 
+question. It gets the fish’s X, Y and compares the boat and fish 
+coordinates using the && operator. It returns a boolean value of the 
+comparison. 
+
+paintComponent() -> This paints the components of the game. It first 
+paints a 2D ellipse for each of the fish, taking parameters from each 
+fish. Then, it draws a polygon tail for each fish. To draw the boat, 
+it paints a GeneralPath object. It also takes parameters from the 
+player object.
+
+ updateFish() -> This function updates the positions of each fish and 
+ checks for collisions with the window’s boundaries. It iterates through 
+ the freeFishes ArrayList and sets the speed and coordinates of the fish. 
+ It then checks if the fish coordinates are exceeding the height and width 
+ of the window, and if so it sets the fish’s speed to negative, 
+reversing its direction. 
+
+main() - > This is the main method of the class. It sets the background 
+color and everything as visible
